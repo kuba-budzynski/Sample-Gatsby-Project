@@ -28,6 +28,7 @@ module.exports = {
         path: `${__dirname}/src/blog-posts/images`,
       },
     },
+    
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -42,9 +43,35 @@ module.exports = {
         // Plugins configs
         plugins: [
           {
+            resolve: "gatsby-remark-embed-video",
+            options: {
+              width: 1024,
+              ratio: 1.77, 
+              height: 624, 
+              related: false,
+              noIframeBorder: true, 
+              loadingStrategy: 'lazy',
+              urlOverrides: [
+                {
+                  id: "youtube",
+                  embedURL: videoId =>
+                    `https://www.youtube-nocookie.com/embed/${videoId}`,
+                },
+              ], 
+              containerClass: "mx-auto m-4",
+              iframeId: false,
+            },
+          },
+          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 800,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `my-6`,
             },
           },
         ],

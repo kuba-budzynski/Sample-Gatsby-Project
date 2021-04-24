@@ -1,19 +1,20 @@
 import React from 'react';
 import { graphql } from 'gatsby'
 import TemplateWrapper from '../layouts';
-import Img from "gatsby-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import '../styles/markdown.css'
 
 const Post = ({ data }) => {
     const post = data.markdownRemark
+    const image = getImage(post.frontmatter.featuredImage)
     return (
         <TemplateWrapper>
             <div className="w-screen max-w-full min-h-screen bg-warmGray-50 py-28">
-                <div className="w-full max-w-5xl px-3 mx-auto">
+                <div className="w-full max-w-5xl px-3 mx-auto flex flex-col justify-center justify-items-center">
                     <h1 className="text-center text-3xl md:text-4xl lg:text-6xl tracking-wider underline mb-4 text-gray-600 font-bold">{post.frontmatter.title}</h1>
                     <h2 className="text-base md:text-lg lg:text-xl italic text-emerald-500 text-center">{post.frontmatter.author}</h2>
-                    <Img fluid={post.frontmatter.featuredImage.childImageSharp.fluid} className="my-12 w-full xl:w-4/5 mx-auto"/>
-                    <div className="w-full max-w-4xl mx-auto">
+                    <GatsbyImage image={image}  alt={post.frontmatter.title} />
+                    <div className="w-full max-w-5xl mx-auto">
                         <div className=".markdown" dangerouslySetInnerHTML={{ __html: post.html }}/>
                     </div>
                 </div>
@@ -33,11 +34,9 @@ export const query = graphql`
       date
       featuredImage {
         childImageSharp {
-            fluid(maxWidth: 1024){
-				...GatsbyImageSharpFluid_withWebp
-            }
+          gatsbyImageData(width: 1024, placeholder: BLURRED, formats: WEBP)
         }
-    }
+      }
     }
     html
   }
