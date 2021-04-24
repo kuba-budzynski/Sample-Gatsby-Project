@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+
+@import url('https://fonts.googleapis.com/css2?family=Merienda+One&display=swap');
+
+body::-webkit-scrollbar {
+    width: 0.9rem;
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #10B981;
+  }
+  
+
+@tailwind utilities;

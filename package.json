@@ -1,0 +1,46 @@
+{
+  "name": "labs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Labs",
+  "author": "kuba-budzynski",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^3.0.2",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^1.6.22",
+    "gatsby": "^3.3.1",
+    "gatsby-image": "^3.3.0",
+    "gatsby-link": "^3.3.0",
+    "gatsby-plugin-image": "^1.3.1",
+    "gatsby-plugin-manifest": "^3.3.0",
+    "gatsby-plugin-mdx": "^2.3.0",
+    "gatsby-plugin-react-helmet": "^4.3.0",
+    "gatsby-plugin-sharp": "^3.3.1",
+    "gatsby-plugin-sitemap": "^3.3.0",
+    "gatsby-plugin-typography": "^3.3.0",
+    "gatsby-remark-images": "^5.0.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-remark": "^4.0.0",
+    "gatsby-transformer-sharp": "^3.3.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "slugify": "^1.5.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "gatsby-plugin-postcss": "^4.3.0",
+    "postcss": "^8.2.12",
+    "tailwindcss": "^2.1.2"
+  }
+}

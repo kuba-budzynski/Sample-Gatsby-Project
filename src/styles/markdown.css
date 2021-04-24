@@ -1,0 +1,50 @@
+*{
+    color: #52525B;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color: #10B981;
+    margin: 0.5rem 0;
+}
+
+strong{
+    font-weight: bold;
+}
+
+em{
+    font-style: italic;
+}
+
+h1{
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+h4{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+h5{
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+h6{
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+p{
+    color: #71717A;
+}
