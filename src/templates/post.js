@@ -2,11 +2,17 @@ import React from 'react';
 import { graphql } from 'gatsby'
 import TemplateWrapper from '../layouts';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { DiscussionEmbed } from "disqus-react"
 import '../styles/markdown.css'
 
 const Post = ({ data }) => {
     const post = data.markdownRemark
     const image = getImage(post.frontmatter.featuredImage)
+    console.log(process.env.GATSBY_DISQUS_NAME)
+    const disqusConfig = {
+      shortname: "StatycznyBlog",
+      config: { identifier: post.frontmatter.title, title: post.frontmatter.title },
+    }
     return (
         <TemplateWrapper>
             <div className="w-screen max-w-full min-h-screen bg-warmGray-50 py-28">
@@ -17,6 +23,7 @@ const Post = ({ data }) => {
                     <div className="w-full max-w-5xl mx-auto">
                         <div className=".markdown" dangerouslySetInnerHTML={{ __html: post.html }}/>
                     </div>
+                    <DiscussionEmbed {...disqusConfig} />
                 </div>
             </div>
         </TemplateWrapper>
