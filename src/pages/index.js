@@ -3,12 +3,14 @@ import {concat} from "lodash"
 import TemplateWrapper from "../layouts"
 import PostList from "../components/PostList"
 import { graphql, useStaticQuery } from "gatsby"
+import truncate from 'truncate'
+import slugify from 'slugify'
 
 const defaultPost = {
   id: "",
   title: "",
   timeToRead: 0,
-  author: "-",
+  author: "Administrator",
   date: "",
   slug: "/",
   excerpt: ""
@@ -70,12 +72,11 @@ const IndexPage = () => {
       timeToRead: defaultPost.timeToRead,
       author: defaultPost.author,
       date: e.node.created,
-      slug: "/" + e.node.id + "/",
-      excerpt: e.node.summary
+      slug: slugify(e.node.title),
+      excerpt: truncate(e.node.body.summary, 150)
     })
     ))
 
-  console.log(data)
   return (
     <TemplateWrapper>
       <main className="w-full h-full flex flex-col">
@@ -86,24 +87,3 @@ const IndexPage = () => {
 }
 
 export default IndexPage
-
-// export const query = graphql`
-// query HomePageQuery{
-//   allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
-//     totalCount
-//     edges {
-//       node {
-//         id
-//         timeToRead
-//         frontmatter {
-//           author
-//           date
-//           title
-//         },
-//         fields{
-//           slug
-//         }
-//         excerpt
-//       }
-//     }
-// }}` 
