@@ -22,7 +22,7 @@ const Post = ({ data, pageContext }) => {
     else if(data.nodeArticle != null){
       post = {
         title: data.nodeArticle.title,
-        author: '',
+        author: 'Administrator',
         date: data.nodeArticle.created,
         html: data.nodeArticle.body.value
       }
