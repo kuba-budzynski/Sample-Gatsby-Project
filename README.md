@@ -52,3 +52,13 @@
 Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
 
 [<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+
+
+## Drupal - local
+
+1. Set local MySQL DB 
+2. Install Drupal
+3. Windows: unzip Drupla in xampp\htdocs folder (you can cange name of folder)
+4. Go to localhost/{name of folder} for example "localhost/drupal". It will redirect you to install page
+
+https://dev-statyczny-blog-drupal.pantheonsite.io

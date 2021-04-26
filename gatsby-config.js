@@ -8,6 +8,13 @@ module.exports = {
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `https://dev-statyczny-blog-drupal.pantheonsite.io/`,
+        skipFileDownloads: true,
+      },
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",

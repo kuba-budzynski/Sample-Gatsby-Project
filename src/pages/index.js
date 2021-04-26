@@ -1,41 +1,85 @@
 import * as React from "react"
+import {concat} from "lodash"
 import TemplateWrapper from "../layouts"
 import PostList from "../components/PostList"
-import { StaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 
+const defaultPost = {
+  id: "",
+  title: "",
+  timeToRead: 0,
+  author: "-",
+  date: "",
+  slug: "/",
+  excerpt: ""
+}
 const IndexPage = () => {
+
+  const data = useStaticQuery(graphql`
+    query HomePageQuery{
+      allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+        totalCount
+          edges {
+            node {
+              id
+              timeToRead
+              frontmatter {
+                author
+                date
+                title
+              },                
+              fields{
+                slug
+              }
+              excerpt
+            }
+          }
+        }
+      siteSearchIndex {
+        index
+      }
+      allNodeArticle(sort: {fields: created, order: DESC}) {
+      edges {
+        node {
+          title
+          id
+          body {
+            summary
+          }
+          created(formatString: "DD-MM-YYYY")
+        }
+      }
+      totalCount
+    }
+    }
+  `)
+  const posts = concat(
+    data.allMarkdownRemark.edges.map(e => ({
+      id: e.node.id,
+      title: e.node.frontmatter.title,
+      timeToRead: e.node.timeToRead,
+      author: e.node.frontmatter.author,
+      date: e.node.frontmatter.date,
+      slug: e.node.fields.slug,
+      excerpt: e.node.excerpt
+    })
+    ), 
+    data.allNodeArticle.edges.map(e => ({
+      id: e.node.id,
+      title: e.node.title,
+      timeToRead: defaultPost.timeToRead,
+      author: defaultPost.author,
+      date: e.node.created,
+      slug: "/" + e.node.id + "/",
+      excerpt: e.node.summary
+    })
+    ))
+
+  console.log(data)
   return (
     <TemplateWrapper>
       <main className="w-full h-full flex flex-col">
-        <StaticQuery
-          query={graphql`
-            query HomePageQuery{
-              allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
-                totalCount
-                edges {
-                  node {
-                    id
-                    timeToRead
-                    frontmatter {
-                      author
-                      date
-                      title
-                    },
-                    fields{
-                      slug
-                    }
-                    excerpt
-                  }
-                }
-            }
-            siteSearchIndex {
-              index
-            }
-            }` }
-            render={data => (
-              <PostList data={data.allMarkdownRemark} index={data.siteSearchIndex.index}/>
-            )}        
-         />
+        <PostList data={posts} index={data.siteSearchIndex.index}/>
       </main>
     </TemplateWrapper>
   )

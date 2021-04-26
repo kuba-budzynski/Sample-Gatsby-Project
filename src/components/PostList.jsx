@@ -35,7 +35,7 @@ const PostList = (props) => {
             document.removeEventListener("mousedown", handleClickOutside)
         }
     }, [ref])
-
+    console.log(props)
     return (
         <div className="w-full h-ful">
 
@@ -62,24 +62,23 @@ const PostList = (props) => {
 
             {/* LIST OF POSTS */}
             <section className={`w-full max-w-2xl px-4 h-full mx-auto space-y-6 mb-16 ${results.length === 0 ? 'filter-none' : 'filter blur-sm'}`}>
-                {props.data.edges.map(({node}) => (
-                    <div key={node.id} className="w-full h-full bg-emerald-50 rounded-lg px-4 py-2 hover:bg-emerald-100 text-gray-400 border-2 border-emerald-100">
-                        <Link to={node.fields.slug} className="w-full h-full">
+                {props.data.map(node =>(node && (<div key={node.id} className="w-full h-full bg-emerald-50 rounded-lg px-4 py-2 hover:bg-emerald-100 text-gray-400 border-2 border-emerald-100">
+                        <Link to={node.slug} className="w-full h-full">
                         <div className="flex space-x-1">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 my-auto text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <p className="text-gray-500 text-sm my-auto">{node.timeToRead} min</p>
                         </div>
-                        <h2 className="text-4xl font-bold tracking-wider text-gray-500 text-center">{node.frontmatter.title}</h2>
+                        <h2 className="text-4xl font-bold tracking-wider text-gray-500 text-center">{node.title}</h2>
                         <p className="py-4 text-justify w-4/5 mx-auto">{node.excerpt}</p>
                         <div className="flex w-full justify-between mt-5">
-                            <p className="text-sm underline">Author: {node.frontmatter.author}</p>
-                            <p className="text-sm italic">Data: {node.frontmatter.date}</p>
+                            <p className="text-sm underline">Author: {node.author}</p>
+                            <p className="text-sm italic">Data: {node.date}</p>
                         </div>
                         </Link>
-                    </div> 
-                ))}
+                    </div>))
+                )}
             </section>
 
         </div>      
