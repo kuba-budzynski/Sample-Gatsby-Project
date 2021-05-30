@@ -6,7 +6,7 @@
 
 ## Code Samples
 
-![code2](https://user-images.githubusercontent.com/72972091/120106806-ce782900-c15e-11eb-9763-be116780495a.png)
+![code2](https://user-images.githubusercontent.com/72972091/120106806-ce782900-c15e-11eb-9763-be116780495a.png | width=400)
 
-![code3](https://user-images.githubusercontent.com/72972091/120106856-fb2c4080-c15e-11eb-9275-cf51aad0dbb5.png)
+![code3](https://user-images.githubusercontent.com/72972091/120106856-fb2c4080-c15e-11eb-9275-cf51aad0dbb5.png | width=400)
 
